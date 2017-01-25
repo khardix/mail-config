@@ -13,3 +13,4 @@
 # Link final files
 - link:
     ~/.mbsyncrc: mbsyncrc
+    ~/.notmuch-config: notmuch-config
