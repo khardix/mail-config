@@ -15,7 +15,7 @@ Account gmail
 # Local store
 MaildirStore gmail-local
 ## Maildirs root
-Path ~/system/mail/gmail
+Path ~/system/mail/gmail/
 ## Inbox maildir
 Inbox ~/system/mail/gmail/inbox
 ## Use alternative UID store, to allow copying messages between inboxes
