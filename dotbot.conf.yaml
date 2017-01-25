@@ -11,4 +11,5 @@
 - shell: []
 
 # Link final files
-- link: {}
+- link:
+    ~/.mbsyncrc: mbsyncrc

@@ -1,0 +1,82 @@
+# Synchronization of the personal Gmail account
+
+# Account info
+IMAPAccount gmail
+Host imap.gmail.com
+User khardix@gmail.com
+PassCmd "gpg2 --quiet --no-tty --decrypt ~/system/mail/.secrets/gmail.gpg"
+## Encrypted communication
+SSLType IMAPS
+
+# Remote store
+IMAPStore gmail-remote
+Account gmail
+
+# Local store
+MaildirStore gmail-local
+## Maildirs root
+Path ~/system/mail/gmail
+## Inbox maildir
+Inbox ~/system/mail/gmail/inbox
+## Use alternative UID store, to allow copying messages between inboxes
+AltMap yes
+
+# Global channel settings
+## Create maildirs on local system
+Create Slave
+## Save sync state inside maildirs
+SyncState *
+
+### Inbox
+Channel gmail-inbox
+Master  :gmail-remote:
+Slave   :gmail-local:
+Patterns INBOX
+#### To get list of valid directories, uncomment and run `mbsync -l
+#Patterns *
+
+### Important
+Channel gmail-important
+Master  :gmail-remote:"[Gmail]/D&AW8-le&AX4-it&AOk-"
+Slave   :gmail-local:important
+
+### Trash
+Channel gmail-trash
+Master  :gmail-remote:"[Gmail]/Ko&AWE-"
+Slave   :gmail-local:trash
+
+### Drafts
+Channel gmail-drafts
+Master  :gmail-remote:"[Gmail]/Koncepty"
+Slave   :gmail-local:drafts
+
+### Sent
+Channel gmail-sent
+Master  :gmail-remote:"[Gmail]/Odeslan&AOE- po&AWE-ta"
+Slave   :gmail-local:sent
+
+### Starred
+Channel gmail-starred
+Master  :gmail-remote:"[Gmail]/S hv&ARs-zdi&AQ0-kou"
+Slave   :gmail-local:starred
+
+### Spam -- enable local review :)
+Channel gmail-spam
+Master  :gmail-remote:"[Gmail]/Spam"
+Slave   :gmail-local:spam
+
+### Archive
+Channel gmail-archive
+Master  :gmail-remote:"[Gmail]/V&AWE-echny zpr&AOE-vy"
+Slave   :gmail-local:archive
+
+## Group all gmail channels together
+Group gmail
+Channel gmail-inbox
+Channel gmail-important
+Channel gmail-trash
+Channel gmail-drafts
+Channel gmail-sent
+Channel gmail-starred
+Channel gmail-spam
+Channel gmail-archive
