@@ -26,6 +26,8 @@ AltMap yes
 Create Slave
 ## Save sync state inside maildirs
 SyncState *
+## Expunge deleted messages on both ends
+Expunge Both
 
 ### Inbox
 Channel gmail-inbox
