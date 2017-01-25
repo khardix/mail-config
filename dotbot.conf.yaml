@@ -1,0 +1,14 @@
+- defaults:
+    link:
+        relink: True
+
+# Prepare directories
+- clean:
+    - '~'
+    - '~/.config'
+
+# Run configuration preparation scripts
+- shell: []
+
+# Link final files
+- link: {}
