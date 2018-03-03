@@ -10,8 +10,10 @@
 # Notmuch will store its database within a sub-directory of the path
 # configured here named ".notmuch".
 #
-[database]
-path=/home/jstanek/system/mail/gmail
+# By default, it uses MAILDIR variable if set
+#
+# [database]
+# path=~/system/mail/gmail
 
 # User configuration
 #
@@ -49,7 +51,7 @@ other_email=stanek.ja@email.cz;khardix@seznam.cz;
 #
 [new]
 tags=new;
-ignore=.isyncuidmap.db;.mbsyncstate;
+ignore=.isyncuidmap.db;.mbsyncstate;.secrets;
 
 # Search configuration
 #
@@ -86,13 +88,3 @@ exclude_tags=trash;spam;
 #
 [maildir]
 synchronize_flags=true
-
-# Cryptography related configuration
-#
-# The following option is supported here:
-#
-#	gpg_path
-#		binary name or full path to invoke gpg.
-#
-[crypto]
-gpg_path=gpg2
