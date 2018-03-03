@@ -14,3 +14,4 @@
 - link:
     ~/.mbsyncrc: mbsyncrc
     ~/.notmuch-config: notmuch-config
+    ~/.msmtprc: msmtprc
