@@ -1,0 +1,21 @@
+# vim:set ft=dosini:
+
+[SpamFilter]
+# Tags mails flagged as SPAM
+
+[KillThreadsFilter]
+# Kill replies to killed mails
+
+[ListMailsFilter]
+# Add list/<id> tags for mailing lists
+
+[ArchiveSentMailsFilter]
+# Replace new with sent tag for Sent emails
+sent_tag = sent
+
+[InboxFilter]
+# Replace new with inbox
+
+[FolderNameFilter]
+# Tags emails according to dirs that they are in
+maildir_separator = /

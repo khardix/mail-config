@@ -1,6 +1,7 @@
 - defaults:
     link:
         relink: True
+        create: True
 
 # Prepare directories
 - clean:
@@ -16,4 +17,5 @@
 - link:
     ~/.mbsyncrc: mbsyncrc
     ~/.notmuch-config: notmuch-config
+    ~/.config/afew/config: afew-config
     ~/.msmtprc: msmtprc
