@@ -10,7 +10,7 @@
 
 # Run configuration preparation scripts
 - shell:
-  - command: 'sed -e "s|@NOTMUCH_DB_PATH@|${MAILDIR:-$HOME/system/mail}|" notmuch-config.in >notmuch-config'
+  - command: 'for inpath in *.in; do sed -e "s|@NOTMUCH_DB_PATH@|${MAILDIR:-$HOME/system/mail}|" "$inpath" >"${inpath%.in}"; done'
     description: Localize notmuch configuration
 
 # Link final files
@@ -19,3 +19,4 @@
     ~/.notmuch-config: notmuch-config
     ~/.config/afew/config: afew-config
     ~/.msmtprc: msmtprc
+    ~/.muttrc: muttrc

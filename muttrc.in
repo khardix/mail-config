@@ -1,0 +1,13 @@
+# Neomutt configuration
+
+# Integration with notmuch
+set virtual_spoolfile=yes
+set folder=@NOTMUCH_DB_PATH@
+virtual-mailboxes "inbox" "notmuch://?query=tag:inbox"
+virtual-mailboxes "archive" "notmuch://?query=tag:archive"
+# virtual-mailboxes "important" "notmuch://?query=tag:important"
+virtual-mailboxes "trash" "notmuch://?query=tag:trash"
+virtual-mailboxes "drafts" "notmuch://?query=tag:drafts"
+virtual-mailboxes "sent" "notmuch://?query=tag:sent"
+# virtual-mailboxes "starred" "notmuch://?query=tag:starred"
+virtual-mailboxes "spam" "notmuch://?query=tag:spam"
