@@ -12,8 +12,8 @@
 #
 # By default, it uses MAILDIR variable if set
 #
-# [database]
-# path=~/system/mail/gmail
+[database]
+path=@NOTMUCH_DB_PATH@
 
 # User configuration
 #

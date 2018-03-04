@@ -8,7 +8,9 @@
     - '~/.config'
 
 # Run configuration preparation scripts
-- shell: []
+- shell:
+  - command: 'sed -e "s|@NOTMUCH_DB_PATH@|${MAILDIR:-$HOME/system/mail}|" notmuch-config.in >notmuch-config'
+    description: Localize notmuch configuration
 
 # Link final files
 - link:
