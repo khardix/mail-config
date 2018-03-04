@@ -13,6 +13,11 @@
 # Replace new with sent tag for Sent emails
 sent_tag = sent
 
+[Filter.0]
+message = Remove inbox tag from archived messages
+query = tag:inbox AND NOT folder:gmail/inbox
+tags = -inbox
+
 [InboxFilter]
 # Replace new with inbox
 
