@@ -20,3 +20,4 @@
     ~/.config/afew/config: afew-config
     ~/.msmtprc: msmtprc
     ~/.config/neomutt/neomuttrc:
+    ~/.config/neomutt/mailcap:

@@ -9,10 +9,6 @@
 [ListMailsFilter]
 # Add list/<id> tags for mailing lists
 
-[ArchiveSentMailsFilter]
-# Replace new with sent tag for Sent emails
-sent_tag = sent
-
 [InboxFilter]
 # Replace new with inbox
 
@@ -24,3 +20,8 @@ tags = -inbox
 [FolderNameFilter]
 # Tags emails according to dirs that they are in
 maildir_separator = /
+
+[MailMover]
+# Move mails according to notmuch queries
+folders = gmail/inbox
+gmail/inbox = 'NOT tag:inbox':gmail/archive
