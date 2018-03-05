@@ -1,13 +1,101 @@
 # Neomutt configuration
 
-# Integration with notmuch
-set virtual_spoolfile=yes
-set folder=@NOTMUCH_DB_PATH@
-virtual-mailboxes "inbox" "notmuch://?query=tag:inbox"
-virtual-mailboxes "archive" "notmuch://?query=tag:archive"
-# virtual-mailboxes "important" "notmuch://?query=tag:important"
-virtual-mailboxes "trash" "notmuch://?query=tag:trash"
-virtual-mailboxes "drafts" "notmuch://?query=tag:drafts"
-virtual-mailboxes "sent" "notmuch://?query=tag:sent"
-# virtual-mailboxes "starred" "notmuch://?query=tag:starred"
-virtual-mailboxes "spam" "notmuch://?query=tag:spam"
+# Paths -----------------------------------------------------------------------
+set folder              = @NOTMUCH_DB_PATH@
+set alias_file          = ~/.config/neomutt/alias   # address aliases store
+set header_cache        = ~/.cache/neomutt/headers  # header cache
+set message_cachedir    = ~/.cache/neomutt/bodies   # message body cache
+set certificate_file    = ~/.local/share/neomutt/certificates # trusted certs store
+set mailcap_path        = ~/.config/neomutt/mailcap # MIME bodies handling
+set tmpdir              = ~/.cache/neomutt/tmp      # temporary files
+set signature           = ~/.config/neomutt/sig     # signature file
+
+# Colors ----------------------------------------------------------------------
+source "/usr/share/doc/neomutt/colorschemes/vombatidae.neomuttrc"
+
+# Basic options ---------------------------------------------------------------
+set wait_key        = no        # do not confirm on ALL external commands
+set mbox_type       = Maildir   # mailbox type
+set timeout         = 3         # idle time before scan
+set mail_check      = 0         # minimum time between scans
+set move            = no        # do not move from spool (gmail does that)
+set delete          = yes       # do not ask for confirmation
+set confirmappend   = no        # do not ask for confirmation
+set quit            = yes       # do not ask for confirmation
+set mark_old        = no        # stick to read/new
+set beep_new        = no        # do not beep
+set pipe_decode     = yes       # strip headers and eval mimes when piping
+set thorough_search = yes       # strip headers and eval mimes before searching
+
+# Sidebar Feature -------------------------------------------------------------
+set sidebar_visible         = yes   # show statusbar
+set sidebar_divider_char    = " │"  # delimit with unicode
+set sidebar_width           = 24    # thinner statusbar
+
+# Sidebar navigation ----------------------------------------------------------
+bind index,pager    <down>  sidebar-next
+bind index,pager    <up>    sidebar-prev
+bind index,pager    <right> sidebar-open
+
+# Status bar ------------------------------------------------------------------
+set status_chars    = " *RA"    # unchanged changed readonly attach-mode
+set status_format   = "─[Folder: %f|%r]─[%m messages%?n?, %n new?%?d?, %d to delete?%?t?, %t tagged?]─%>─%?p?[%p drafted]?─"
+
+# Viewing mail headers --------------------------------------------------------
+unhdr_order *
+hdr_order from: to: cc: date: subject:
+
+# Mailboxes and notmuch settings ----------------------------------------------
+set virtual_spoolfile   = yes   # use notmuch DB in place of spool file
+virtual-mailboxes "inbox"   "notmuch://?query=tag:inbox" \
+                  "archive" "notmuch://?query=tag:archive" \
+                  "sent"    "notmuch://?query=tag:sent" \
+                  "drafts"  "notmuch://?query=tag:drafts" \
+                  "spam"    "notmuch://?query=tag:spam" \
+                  "trash"   "notmuch://?query=tag:trash" \
+
+# set mbox = +gmail/archive  # mailbox for read messages, enable if needed
+set postponed   = "+gmail/drafts"
+set nm_open_timeout = $timeout  # Wait time before opening notmuch DB
+set nm_query_type   = threads
+
+# Generic key bindings --------------------------------------------------------
+bind index,pager    g   noop
+
+# Index view options ----------------------------------------------------------
+set date_format     = "%Y-%m-%d"                    # ISO dateformat
+set index_format    = "[%Z] %D | %-20.20F | %s"     # status date from subject
+set sort            = threads                       # lige gmail
+set sort_aux        = reverse-last-date-received    # like gmail
+set uncollapse_jump = yes                           # jump to first unread on thread uncollapse
+set sort_re         = yes                           # RE-based threads
+set reply_regexp    = "^(([Rr][Ee]?(\[[0-9]+\])?: *)?(\[[^]]+\] *)?)*"
+
+# Index key bindings ----------------------------------------------------------
+bind index gg       first-entry
+bind index G        last-entry
+bind index R        group-reply
+bind index \S<tab>  sync-mailbox
+bind index <space>  collapse-thread
+
+macro index O "<shell-escape>mbsync gmail && notmuch new && afew --tag --new<enter>" "Sync mailboxes"
+
+bind index \Cx      vfolder-from-query
+
+# Pager view options ----------------------------------------------------------
+set pager_index_lines   = 10    # Number of index lines to show
+set pager_context       = 3     # Number of context lines to show
+set pager_stop          = yes   # Do not go to next message atomatically
+set menu_scroll         = yes   # Scroll in menus
+set tilde               = yes   # Show tildes like in vim
+set markers             = no    # Do not show wrapped lines with +
+
+set quote_regexp        = "^( {0,4}[>|:#%]| {0,4}[a-z0-9]+[>|]+)+"
+alternative_order       text/plain text/enriched text/html
+
+# Pager key bindings ----------------------------------------------------------
+bind pager k        previous-line
+bind pager j        next-line
+bind pager gg       top
+bind pager G        bottom
+bind pager R        group-reply
