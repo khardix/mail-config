@@ -15,6 +15,7 @@
 
 # Link final files
 - link:
+    ~/.local/bin/sync-mail: sync.sh
     ~/.mbsyncrc: mbsyncrc
     ~/.notmuch-config: notmuch-config
     ~/.config/afew/config: afew-config
