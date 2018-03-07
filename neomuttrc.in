@@ -105,6 +105,7 @@ bind pager j        next-line
 bind pager gg       top
 bind pager G        bottom
 bind pager R        group-reply
+macro pager \Cu     "<pipe-message>urlscan<enter>" "List URLs in message"
 
 # Compose view options --------------------------------------------------------
 set realname            = "Jan Khardix Staněk"  # Name in From: header
