@@ -26,6 +26,7 @@ set mark_old        = no        # stick to read/new
 set beep_new        = no        # do not beep
 set pipe_decode     = yes       # strip headers and eval mimes when piping
 set thorough_search = yes       # strip headers and eval mimes before searching
+set resolve         = no        # Do not advance to next on tagging, marking, etc
 
 # Sidebar Feature -------------------------------------------------------------
 set sidebar_visible         = yes   # show statusbar
@@ -61,7 +62,9 @@ set nm_query_type   = threads
 
 # Generic key bindings --------------------------------------------------------
 bind index,pager    g   noop
-macro index,pager   a   "<modify-labels>+archive -inbox<enter><quasi-delete><sync-mailbox>" "archive message"
+macro index,pager   a   "<modify-labels-then-hide>-inbox +archive<enter>" "archive message"
+macro index,pager   A   "<tag-thread><tag-prefix>a<tag-thread>" "archive thread"
+macro index,pager   d   "<modify-labels-then-hide>-inbox -archive -sent -drafts -spam +trash<enter>" "delete message"
 
 # Index view options ----------------------------------------------------------
 set date_format     = "%Y-%m-%d"                    # ISO dateformat
