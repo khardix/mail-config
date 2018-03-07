@@ -118,6 +118,7 @@ set markers             = no    # Do not show wrapped lines with +
 set quote_regexp        = "^( {0,4}[>|:#%]| {0,4}[a-z0-9]+[>|]+)+"
 alternative_order       text/plain text/enriched text/html
 auto_view               text/html
+set assumed_charset     = "iso-8859-2:utf-8"
 
 # Pager key bindings ----------------------------------------------------------
 bind pager k        previous-line
