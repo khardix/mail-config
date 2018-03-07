@@ -28,6 +28,22 @@ set pipe_decode     = yes       # strip headers and eval mimes when piping
 set thorough_search = yes       # strip headers and eval mimes before searching
 set resolve         = no        # Do not advance to next on tagging, marking, etc
 
+# Cryptography ----------------------------------------------------------------
+source ~/.config/neomutt/gpg-commands.rc    # setup GPG commands
+set crypt_autoencrypt           = no    # Do not encrypt by default
+set crypt_autosign              = yes   # Do automatically sign mails
+set crypt_opportunistic_encrypt = yes   # Do automatically encrypt, if you can
+set crypt_replyencrypt          = yes   # Reply in kind to encrypted messages
+set crypt_replysign             = yes   # Reply in kind to signed messages
+set crypt_replysignencrypted    = yes   # Sign replies to encrypted messages
+set crypt_use_gpgme             = yes   # Use GnuPG Made Easy
+set crypt_verify_sig            = yes   # Verify signatures
+
+set pgp_self_encrypt            = yes   # Encrypt to self
+set pgp_self_encrypt_as         = BF7F9E070E948D07C3958AD0C86D712D5A5F734C
+set pgp_sign_as                 = $pgp_self_encrypt_as
+set pgp_use_gpg_agent           = yes   # Assume GPG agent is running and use it
+
 # Sidebar Feature -------------------------------------------------------------
 set sidebar_visible         = yes   # show statusbar
 set sidebar_divider_char    = " │"  # delimit with unicode
@@ -134,3 +150,4 @@ set query_command       = "goobook query '%s'"  # Query goobook for contacts
 
 # Compose key bindings --------------------------------------------------------
 bind compose p      postpone-message
+bind compose P      pgp-menu
