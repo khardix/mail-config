@@ -10,7 +10,7 @@
 
 # Run configuration preparation scripts
 - shell:
-  - command: 'for inpath in *.in; do sed -e "s|@NOTMUCH_DB_PATH@|${MAILDIR:-$HOME/system/mail}|" "$inpath" >"${inpath%.in}"; done'
+  - command: 'find $pwd -name \*.in -type f| while read inpath; do sed -e "s|@NOTMUCH_DB_PATH@|${MAILDIR:-$HOME/system/mail}|" "$inpath" >"${inpath%.in}"; done'
     description: Localize notmuch configuration
 
 # Link final files
@@ -20,5 +20,5 @@
     ~/.notmuch-config: notmuch-config
     ~/.config/afew/config: afew-config
     ~/.msmtprc: msmtprc
-    ~/.config/neomutt/neomuttrc:
-    ~/.config/neomutt/mailcap:
+    ~/.config/neomutt:
+        force: True
