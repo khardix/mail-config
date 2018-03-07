@@ -56,9 +56,11 @@ virtual-mailboxes "inbox"   "notmuch://?query=tag:inbox" \
                   "trash"   "notmuch://?query=tag:trash" \
 
 # set mbox = +gmail/archive  # mailbox for read messages, enable if needed
-set postponed   = "+gmail/drafts"
-set nm_open_timeout = $timeout  # Wait time before opening notmuch DB
-set nm_query_type   = threads
+set postponed                   = "+gmail/drafts"
+set nm_open_timeout             = $timeout  # Wait time before opening notmuch DB
+set nm_query_type               = threads
+set nm_query_window_duration    = 6         # Time window size for NM query
+set nm_query_window_timebase    = "month"   # Time window unit for NM query
 
 # Generic key bindings --------------------------------------------------------
 bind index,pager    g   noop
@@ -86,6 +88,8 @@ bind index p        recall-message
 macro index O "<shell-escape>afew --move --all && mbsync gmail && notmuch new && afew --tag --new<enter>" "Sync mailboxes"
 
 bind index \Cx      vfolder-from-query
+bind index >        vfolder-window-backward     # Move to past
+bind index <        vfolder-window-forward      # Move to future
 
 # Pager view options ----------------------------------------------------------
 set pager_index_lines   = 10    # Number of index lines to show
