@@ -73,6 +73,7 @@ virtual-mailboxes "inbox"   "notmuch://?query=tag:inbox" \
 
 # set mbox = +gmail/archive  # mailbox for read messages, enable if needed
 set postponed                   = "+gmail/drafts"
+set trash                       = "+gmail/trash"
 set nm_open_timeout             = $timeout  # Wait time before opening notmuch DB
 set nm_query_type               = threads
 set nm_query_window_duration    = 6         # Time window size for NM query
@@ -82,7 +83,8 @@ set nm_query_window_timebase    = "month"   # Time window unit for NM query
 bind index,pager    g   noop
 macro index,pager   a   "<modify-labels-then-hide>-inbox +archive<enter>" "archive message"
 macro index,pager   A   "<tag-thread><tag-prefix>a<tag-thread>" "archive thread"
-macro index,pager   d   "<modify-labels-then-hide>-inbox -archive -sent -drafts -spam +trash<enter>" "delete message"
+macro index,pager   d   "<modify-labels>-inbox -archive -sent -drafts -spam +trash<enter><delete-message>" "delete message"
+macro index,pager   D   "d<purge-message>"
 
 # Index view options ----------------------------------------------------------
 set date_format     = "%Y-%m-%d"                    # ISO dateformat
