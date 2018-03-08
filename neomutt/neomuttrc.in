@@ -81,10 +81,10 @@ set nm_query_window_timebase    = "month"   # Time window unit for NM query
 
 # Generic key bindings --------------------------------------------------------
 bind index,pager    g   noop
-macro index,pager   a   "<modify-labels-then-hide>-inbox +archive<enter>" "archive message"
+macro index,pager   a   "<modify-labels>-inbox +archive<enter>" "archive message"
 macro index,pager   A   "<tag-thread><tag-prefix>a<tag-thread>" "archive thread"
 macro index,pager   d   "<modify-labels>-inbox -archive -sent -drafts -spam +trash<enter><delete-message>" "delete message"
-macro index,pager   D   "d<purge-message>"
+macro index,pager   D   "d<purge-message>" "delete message without using trash"
 
 # Index view options ----------------------------------------------------------
 set date_format     = "%Y-%m-%d"                    # ISO dateformat
