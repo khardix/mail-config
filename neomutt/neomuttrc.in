@@ -81,7 +81,7 @@ set nm_query_window_timebase    = "month"   # Time window unit for NM query
 
 # Generic key bindings --------------------------------------------------------
 bind index,pager    g   noop
-macro index,pager   a   "<modify-labels>-inbox +archive<enter>" "archive message"
+macro index,pager   a   "<modify-labels-then-hide>-inbox +archive<enter>" "archive message"
 macro index,pager   A   "<tag-thread><tag-prefix>a<tag-thread>" "archive thread"
 macro index,pager   d   "<modify-labels>-inbox -archive -sent -drafts -spam +trash<enter><delete-message>" "delete message"
 macro index,pager   D   "d<purge-message>" "delete message without using trash"
@@ -104,6 +104,8 @@ bind index <space>  collapse-thread
 bind index p        recall-message
 
 macro index O "<shell-escape>afew --move --all && mbsync gmail && notmuch new && afew --tag --new<enter>" "Sync mailboxes"
+startup-hook    "push O"
+shutdown-hook   "push O"
 
 bind index \Cx      vfolder-from-query
 bind index >        vfolder-window-backward     # Move to past
