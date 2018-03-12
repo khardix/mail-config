@@ -137,7 +137,7 @@ set realname            = "Jan Khardix Staněk"  # Name in From: header
 set use_envelope_from   = yes                   # Read From: header when sending
 set sig_dashes          = yes                   # Dashes before signature
 set edit_headers        = yes                   # Show headers when composing
-# set autoedit            = yes                   # Skip prompts and start editing immediately
+set autoedit            = yes                   # Skip prompts and start editing immediately
 set fast_reply          = yes                   # Skip directly to compose on reply
 set fcc_attach          = yes                   # Save attachments with the body
 set mime_forward        = no                    # Forward as part of the body
@@ -149,6 +149,7 @@ set forward_quote       = yes                   # Include message in forwards
 set from                = "khardix@gmail.com"   # Default e-mail
 set sendmail            = "msmtp -a gmail"      # Command for sending e-mails
 set sendmail_wait       = 0                     # Wait for sendmail finish
+set send_charset        = "us-ascii:utf-8"      # Use utf-8 when possible
 unset record                                    # Do not save sent messages
 set postpone            = ask-no                # Presume not saving drafts on exit
 set query_command       = "goobook query '%s'"  # Query goobook for contacts
