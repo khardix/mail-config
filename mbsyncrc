@@ -4,7 +4,7 @@
 IMAPAccount gmail
 Host imap.gmail.com
 User khardix@gmail.com
-PassCmd "gpg2 --quiet --no-tty --decrypt ~/system/mail/.secrets/gmail.gpg"
+PassCmd "pass show email/gmail"
 ## Encrypted communication
 SSLType IMAPS
 
