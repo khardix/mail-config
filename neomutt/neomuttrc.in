@@ -40,8 +40,8 @@ set crypt_use_gpgme             = yes   # Use GnuPG Made Easy
 set crypt_verify_sig            = yes   # Verify signatures
 
 set pgp_self_encrypt            = yes   # Encrypt to self
-set pgp_self_encrypt_as         = BF7F9E070E948D07C3958AD0C86D712D5A5F734C
-set pgp_sign_as                 = $pgp_self_encrypt_as
+set pgp_sign_as                 = 985B4BC4CAC2C5F899612E629F3A8B710FBCF63E
+set pgp_self_encrypt_as         = $pgp_sign_as
 set pgp_use_gpg_agent           = yes   # Assume GPG agent is running and use it
 
 # Sidebar Feature -------------------------------------------------------------
