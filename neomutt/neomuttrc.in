@@ -6,7 +6,7 @@ set alias_file          = ~/.config/neomutt/alias   # address aliases store
 set header_cache        = ~/.cache/neomutt/headers  # header cache
 set message_cachedir    = ~/.cache/neomutt/bodies   # message body cache
 set certificate_file    = ~/.local/share/neomutt/certificates # trusted certs store
-set ssl_ca_certificates_file = /etc/ssl/certs/ca-certificates.crt
+# set ssl_ca_certificates_file = /etc/ssl/certs/ca-certificates.crt
 set mailcap_path        = ~/.config/neomutt/mailcap # MIME bodies handling
 set tmpdir              = ~/.cache/neomutt/tmp      # temporary files
 set signature           = ~/.config/neomutt/sig     # signature file
@@ -39,6 +39,7 @@ set crypt_replysign             = yes   # Reply in kind to signed messages
 set crypt_replysignencrypted    = yes   # Sign replies to encrypted messages
 set crypt_use_gpgme             = yes   # Use GnuPG Made Easy
 set crypt_verify_sig            = yes   # Verify signatures
+set ssl_usesystemcerts          = yes   # Trust system CA certificates
 
 set pgp_self_encrypt            = yes   # Encrypt to self
 set pgp_sign_as                 = 985B4BC4CAC2C5F899612E629F3A8B710FBCF63E
