@@ -6,6 +6,7 @@ set alias_file          = ~/.config/neomutt/alias   # address aliases store
 set header_cache        = ~/.cache/neomutt/headers  # header cache
 set message_cachedir    = ~/.cache/neomutt/bodies   # message body cache
 set certificate_file    = ~/.local/share/neomutt/certificates # trusted certs store
+set ssl_ca_certificates_file = /etc/ssl/certs/ca-certificates.crt
 set mailcap_path        = ~/.config/neomutt/mailcap # MIME bodies handling
 set tmpdir              = ~/.cache/neomutt/tmp      # temporary files
 set signature           = ~/.config/neomutt/sig     # signature file
@@ -65,7 +66,7 @@ hdr_order from: to: cc: date: subject:
 # Mailboxes and notmuch settings ----------------------------------------------
 set virtual_spoolfile   = yes   # use notmuch DB in place of spool file
 virtual-mailboxes "inbox"   "notmuch://?query=tag:inbox" \
-                  "archive" "notmuch://?query=tag:archive" \
+                  "archive" "notmuch://?query=NOT (tag:spam OR tag:trash OR tag:killed)" \
                   "sent"    "notmuch://?query=tag:sent" \
                   "drafts"  "notmuch://?query=tag:drafts" \
                   "spam"    "notmuch://?query=tag:spam" \

@@ -1,7 +1,8 @@
+---
 - defaults:
     link:
-        relink: True
-        create: True
+      relink: true
+      create: true
 
 # Prepare directories
 - clean:
@@ -10,8 +11,13 @@
 
 # Run configuration preparation scripts
 - shell:
-  - command: 'find $pwd -name \*.in -type f| while read inpath; do sed -e "s|@NOTMUCH_DB_PATH@|${MAILDIR:-$HOME/system/mail}|" "$inpath" >"${inpath%.in}"; done'
-    description: Localize notmuch configuration
+    - description: Localize notmuch configuration
+      # yamllint disable rule:line-length
+      command: >
+        find $pwd -name \*.in -type f | while read inpath; do
+          sed -e "s|@NOTMUCH_DB_PATH@|${MAILDIR:-$HOME/system/mail}|" "$inpath" >"${inpath%.in}";
+        done
+      # yamllint enable rule:line-length
 
 # Link final files
 - link:
@@ -20,4 +26,5 @@
     ~/.config/afew/config: afew-config
     ~/.msmtprc: msmtprc
     ~/.config/neomutt:
-        force: True
+      force: true
+    ~/system/mail/.notmuch/hooks/post-new: notmuch-post-new

@@ -9,17 +9,10 @@
 [ListMailsFilter]
 # Add list/<id> tags for mailing lists
 
-[FolderNameFilter]
-# Tags emails according to dirs that they are in
-maildir_separator = /
+[ArchiveSentMailsFilter]
+# Mark e-mails from me as 'sent'
+sent_tag = sent
 
 [Filter.9]
 message = Finish tagging by removing the new tag
 tags = -new
-
-[MailMover]
-# Move mails according to notmuch queries
-folders = gmail/inbox gmail/spam gmail/archive
-gmail/inbox = 'NOT tag:inbox':gmail/archive
-gmail/spam = 'NOT tag:spam AND tag:inbox':gmail/inbox 'NOT tag:spam':gmail/archive 'tag:trash':gmail/trash
-gmail/archive = 'tag:trash':gmail/trash

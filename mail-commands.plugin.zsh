@@ -1,9 +1,9 @@
+#!/usr/bin/zsh
+
 # synchronize local Maildirs
 sync-mail() {
-    afew --move --all \
-    && mbsync gmail \
-    && notmuch new \
-    && afew --tag --new
+    cd ~/system/mail/gmail && gmi sync
+    cd && notmuch new
 }
 
 # invoke neomutt with syncing
