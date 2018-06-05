@@ -51,7 +51,7 @@ other_email=stanek.ja@email.cz;khardix@seznam.cz;
 #
 [new]
 tags=new;
-ignore=.isyncuidmap.db;.mbsyncstate;.secrets;
+ignore=.isyncuidmap.db;.mbsyncstate;.secrets;.gmailieer.json;
 
 # Search configuration
 #
