@@ -83,7 +83,7 @@ set nm_query_window_timebase    = "month"   # Time window unit for NM query
 
 # Generic key bindings --------------------------------------------------------
 bind index,pager    g   noop
-macro index,pager   a   "<modify-labels-then-hide>-inbox +archive<enter>" "archive message"
+macro index,pager   a   "<modify-labels-then-hide>-inbox<enter>" "archive message"
 macro index,pager   A   "<tag-thread><tag-prefix>a<tag-thread>" "archive thread"
 macro index,pager   d   "<modify-labels>-inbox -archive -sent -drafts -spam +trash<enter><delete-message>" "delete message"
 macro index,pager   D   "d<purge-message>" "delete message without using trash"
@@ -98,14 +98,17 @@ set sort_re         = yes                           # RE-based threads
 set reply_regexp    = "^(([Rr][Ee]?(\[[0-9]+\])?: *)?(\[[^]]+\] *)?)*"
 
 # Index key bindings ----------------------------------------------------------
+bind index h        quit
+bind index j        next-entry
+bind index k        previous-entry
+bind index l        display-message
+
 bind index gg       first-entry
 bind index G        last-entry
 bind index R        group-reply
 bind index \S<tab>  sync-mailbox
 bind index <space>  collapse-thread
 bind index p        recall-message
-
-macro index O "<shell-escape>afew --move --all && mbsync gmail && notmuch new && afew --tag --new<enter>" "Sync mailboxes"
 
 bind index \Cx      vfolder-from-query
 bind index >        vfolder-window-backward     # Move to past
@@ -125,6 +128,7 @@ auto_view               text/html
 set assumed_charset     = "iso-8859-2:utf-8"
 
 # Pager key bindings ----------------------------------------------------------
+bind pager h        exit
 bind pager k        previous-line
 bind pager j        next-line
 bind pager gg       top
